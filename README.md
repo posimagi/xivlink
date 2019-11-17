@@ -11,7 +11,7 @@ You must have Python 3.5 or newer (https://www.python.org/downloads/).
 `xivlink` can be invoked in either of two ways
 
 * run `xivlink.py` as administrator, with an applicable version of Python in your `PATH`
-* open an elevated command prompt, e.g. by right-clicking on Start and then clicking "Command Prompt (Admin)"
+* open an elevated command prompt, e.g. by right-clicking on Start and then clicking "Command Prompt (Admin)", navigate to the directory containing `xivlink.py`, and then run `python xivlink.py`
 
 ### A word about ADDON.DAT
 
