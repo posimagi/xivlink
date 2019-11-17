@@ -4,7 +4,8 @@ import os
 import shutil
 
 try:
-    is_admin = os.getuid() == 0
+    is_admin = true
+    _ = os.getuid() == 0
 except AttributeError:
     is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
 if not is_admin:
