@@ -1,6 +1,6 @@
 # xivlink
 
-A tool for semi-permanently synchonizing your Final Fantasy XIV settings across multiple systems.
+A tool for semi-permanently synchonizing your Final Fantasy XIV character and UI settings across multiple systems.
 
 ## System Requirements
 
