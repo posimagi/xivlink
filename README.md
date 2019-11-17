@@ -4,7 +4,8 @@ A tool for semi-permanently synchonizing your Final Fantasy XIV character and UI
 
 ## System Requirements
 
-You must have Python 3.5 or newer (https://www.python.org/downloads/).
+* You must have Python 3.5 or newer (https://www.python.org/downloads/).
+* You need some kind of shared storage. I recommend using a Dropbox folder for automatic synchronization, but even something as simple as a flash drive that you take with you and leave in your active system will work.
 
 ## How to Use
 
@@ -20,6 +21,10 @@ You must have Python 3.5 or newer (https://www.python.org/downloads/).
 ### Why are Administrator privileges required?
 
 Unfortunately, Windows requires Administrator privileges to create symlinks. On macOS and Linux, root privileges should not be necessary.
+
+### *Semi*-permanent?
+
+Running this tool once on each machine on which you play should keep their settings synchronized forever, but there's no guarantee that the internal structure of the user data directory won't be changed at some point in the future. If that happens, the synchronization may or may not continue to work, and re-running it without an update to the tool itself may or may not be sufficient to restore synchronization. The future is so exciting!
 
 ## Miscellany
 
