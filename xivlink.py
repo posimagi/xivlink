@@ -25,7 +25,8 @@ def get_character_directory():
     candidate_dir_parent = PurePath.joinpath(
         home, "Documents", "My Games", "FINAL FANTASY XIV - A Realm Reborn")
     candidate_dirs = os.listdir(candidate_dir_parent)
-    candidate_dirs = [d for d in candidate_dirs if d.find("FFXIV_CHR") >= 0 and d.find("backup") == -1]
+    candidate_dirs = [d for d in candidate_dirs if d.find(
+        "FFXIV_CHR") >= 0 and d.find("backup") == -1]
     if len(candidate_dirs) >= 1:
         candidate_dir = [PurePath.joinpath(candidate_dir_parent, d)
                          for d in candidate_dirs]
@@ -35,7 +36,8 @@ def get_character_directory():
             query += "- " + str(d) + "\n"
         query += "Use all of these directories?\n"
         if len(candidate_dirs) == 1:
-            query = "Found candidate directory:\n- " + str(candidate_dir[0]) + "\nUse this directory?\n"
+            query = "Found candidate directory:\n- " + \
+                str(candidate_dir[0]) + "\nUse this directory?\n"
         use_candidate = ask_yes_no_quit(query)
         if use_candidate:
             return candidate_dir, candidate_dir_rel
@@ -58,7 +60,8 @@ def get_share_directory():
     home = Path.home()
     potential_dropbox = PurePath.joinpath(home, "Dropbox")
     if Path.exists(potential_dropbox):
-        query = "Synchronize using Dropbox found at " + str(potential_dropbox) + "?\n"
+        query = "Synchronize using Dropbox found at " + \
+            str(potential_dropbox) + "?\n"
         use_dropbox = ask_yes_no_quit(query)
         if use_dropbox:
             return potential_dropbox
@@ -89,14 +92,14 @@ def create_links(char_dirs, char_dirs_rel, share_dir, copy_ui):
         if Path.exists(char_dir) and Path.exists(share_dir):
             result = "failure"
             destination = PurePath.joinpath(share_dir, char_dir_rel)
-            backup_dir = Path(str(char_dir) + '-backup-' + \
-                str(datetime.datetime.now().date()))
+            backup_dir = Path(str(char_dir) + '-backup-' +
+                              str(datetime.datetime.now().date()))
             if Path.exists(backup_dir):
                 shutil.rmtree(backup_dir)
             shutil.copytree(char_dir, backup_dir)
             if copy_ui:
                 if not Path.exists(destination):
-                    shutil.move(char_dir, destination)    
+                    shutil.move(char_dir, destination)
                 os.symlink(destination, char_dir, target_is_directory=True)
                 result = "success"
             else:
@@ -105,8 +108,10 @@ def create_links(char_dirs, char_dirs_rel, share_dir, copy_ui):
                 for f in os.listdir(char_dir):
                     if f.upper().startswith("ADDON"):
                         continue
-                    shutil.move(PurePath.joinpath(char_dir, f), PurePath.joinpath(share_dir, char_dir_rel, f))
-                    os.symlink(PurePath.joinpath(share_dir, char_dir_rel, f), PurePath.joinpath(char_dir, f))
+                    shutil.move(PurePath.joinpath(char_dir, f),
+                                PurePath.joinpath(share_dir, char_dir_rel, f))
+                    os.symlink(PurePath.joinpath(
+                        share_dir, char_dir_rel, f), PurePath.joinpath(char_dir, f))
                     result = "success"
     if result == "success":
         print("Created links successfully. Run this program once on each system you wish to synchronize.")
