@@ -2,6 +2,15 @@
 
 A tool for semi-permanently synchonizing your Final Fantasy XIV character and UI settings across multiple systems.
 
+## Latest Patch Notes
+
+### February 19, 2020
+
+* `xivlink` will now attempt to automatically find your character settings directory and Dropbox folder. You can still input paths manually by selecting "no", or if none are found in the first place. Technophobes, rejoice!
+* Linking multiple character directories in a single run is now supported. Alts, rejoice!
+* Linking will no longer fail if `xivlink` created a backup earlier in the same day.
+* If no directories can be linked, you will now be informed of that fact.
+
 ## System Requirements
 
 * You must have Python 3.5 or newer (https://www.python.org/downloads/).
